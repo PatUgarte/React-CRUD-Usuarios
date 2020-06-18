@@ -7,20 +7,19 @@ export default class UserListContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            listaUsuarios: [4, 2, 7],
-        };
+
+        this.state = {};
     }
 
     render() {
-        const { listaUsuarios } = this.state;
+        const { usuarios, onClick } = this.props;
         return (
             <>
                 <h1>Lista de Usuarios</h1>
                 <div className="listContainer">
-                    <ListItem title="Usuarios" type="title" />
+                    <ListItem title="Usuarios" type="title" onClick={() => onClick()} />
                     {
-                        listaUsuarios.map((user) => <ListItem title={`Usuario${user}`} type="item" key={user} />)
+                        usuarios.map((user) => <ListItem title={`Usuario${user}`} type="item" usuario={user} onClick={(user) => onClick(user)} key={user} />)
                     }
                 </div>
             </>

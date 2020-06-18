@@ -23,7 +23,6 @@ button {
 
 .listItem {
     padding: 25px 50px;
-    background-color: #ddd;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

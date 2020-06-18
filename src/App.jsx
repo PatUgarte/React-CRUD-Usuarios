@@ -7,20 +7,37 @@ export default class App extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
-            route: "lista",
+            route: "list",
+            selectedUser: null,
         };
+
+        this.toggleRouteState = this.toggleRouteState.bind(this);
+    }
+
+    toggleRouteState(selectedUser) {
+
+        const { route } = this.state;
+
+        this.setState(
+            {
+                route: (route === "list") ? "form" : "list",
+                selectedUser,
+            }
+        );
     }
 
     render() {
-        const { route } = this.state;
+        const { route, selectedUser } = this.state;
+        const listaUsuarios = [4, 2, 7];
 
         return (
             <div className="App">
                 {
-                    route === "lista"
-                        ? (<UserListContainer />)
-                        : (<UserForm />)
+                    route === "list"
+                        ? (<UserListContainer usuarios={listaUsuarios} onClick={(user) => this.toggleRouteState(user)} />)
+                        : (<UserForm user={selectedUser} onClick={(user) => this.toggleRouteState(user)} />)
                 }
             </div>
         );
