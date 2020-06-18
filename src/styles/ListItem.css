@@ -1,0 +1,56 @@
+p {
+    margin: auto 0;
+    width: 17%;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 40px;
+    margin: auto 0;
+    cursor: pointer;
+    outline: none;
+    font-weight: bolder;
+}
+
+.button-container {
+    align-self: end;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.listItem {
+    padding: 25px 50px;
+    background-color: #ddd;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bolder;
+    border-bottom: 5px dashed rgb(90, 90, 90);
+}
+
+.title button {
+    background-color: rgb(50, 50, 255);
+    padding: 10px 50px;
+}
+
+.item {
+    color: rgb(90, 90, 90);
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+.item p {
+    text-align: center;
+}
+
+.item:last-child {
+    border: none;
+}
