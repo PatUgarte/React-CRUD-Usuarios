@@ -30,7 +30,30 @@ export default class App extends React.Component {
 
     render() {
         const { route, selectedUser } = this.state;
-        const listaUsuarios = [4, 2, 7];
+        // const listaUsuarios = [4, 2, 7];
+        const listaUsuarios = [
+            {
+                id: 1,
+                name: "Mario Bros",
+                mail: "mario@nintendo.com",
+                username: "ItsMeMario",
+                website: "",
+            },
+            {
+                id: 2,
+                name: "Luigi Bros",
+                mail: "lbros@nintendo.com",
+                username: "MariosTallerBrother",
+                website: "http://www.luigi.com",
+            },
+            {
+                id: 3,
+                name: "Patricio Ugarte",
+                mail: "pat@digitalhouse.com",
+                username: "PatUgarte",
+                website: "https://www.patugarte.dev",
+            }
+        ];
 
         return (
             <div className="App">

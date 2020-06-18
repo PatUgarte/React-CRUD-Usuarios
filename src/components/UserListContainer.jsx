@@ -19,7 +19,7 @@ export default class UserListContainer extends Component {
                 <div className="listContainer">
                     <ListItem title="Usuarios" type="title" onClick={() => onClick()} />
                     {
-                        usuarios.map((user) => <ListItem title={`Usuario${user}`} type="item" usuario={user} onClick={(user) => onClick(user)} key={user} />)
+                        usuarios.map((user) => <ListItem title={`@${user.username}`} type="item" usuario={user} onClick={(user) => onClick(user)} key={user.id} />)
                     }
                 </div>
             </>

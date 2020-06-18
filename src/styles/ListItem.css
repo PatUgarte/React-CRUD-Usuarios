@@ -4,10 +4,10 @@ p {
 }
 
 button {
-    background-color: black;
+    background-color: rgb(50, 50, 255);
     color: white;
     border-radius: 20px;
-    padding: 10px 40px;
+    padding: 10px 50px;
     margin: auto 0;
     cursor: pointer;
     outline: none;
@@ -34,9 +34,9 @@ button {
     border-bottom: 5px dashed rgb(90, 90, 90);
 }
 
-.title button {
-    background-color: rgb(50, 50, 255);
-    padding: 10px 50px;
+.item button {
+    background-color: black;
+    padding: 10px 40px;
 }
 
 .item {
