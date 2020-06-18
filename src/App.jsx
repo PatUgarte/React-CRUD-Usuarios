@@ -30,7 +30,6 @@ export default class App extends React.Component {
 
     render() {
         const { route, selectedUser } = this.state;
-        // const listaUsuarios = [4, 2, 7];
         const listaUsuarios = [
             {
                 id: 1,
@@ -59,8 +58,12 @@ export default class App extends React.Component {
             <div className="App">
                 {
                     route === "list"
-                        ? (<UserListContainer usuarios={listaUsuarios} onClick={(user) => this.toggleRouteState(user)} />)
-                        : (<UserForm user={selectedUser} onClick={(user) => this.toggleRouteState(user)} />)
+                        ? (<UserListContainer
+                            usuarios={listaUsuarios}
+                            onClick={(user) => this.toggleRouteState(user)} />)
+                        : (<UserForm
+                            user={selectedUser}
+                            onClick={(user) => this.toggleRouteState(user)} />)
                 }
             </div>
         );
