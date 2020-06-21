@@ -36,7 +36,7 @@ export default class UserForm extends Component {
         const { user } = this.state;
         return (
             <>
-                <h1>{user.name === "" ? "Formulario de Edición" : "Dando de alta un nuevo usuario"}</h1>
+                <h1>{this.props.user ? "Formulario de Edición" : "Dando de alta un nuevo usuario"}</h1>
                 <div className="user-form-container">
                     <form onSubmit={this.handleSubmit}>
                         <label htmlFor="name">Nombre completo:</label>
