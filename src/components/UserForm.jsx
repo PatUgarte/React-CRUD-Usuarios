@@ -5,30 +5,60 @@ export default class UserForm extends Component {
 
     constructor(props) {
         super(props);
-
+        console.log(props);
+        
         this.state = {
-            user: null,
-        }
+            user:
+                this.props.user
+                    ? this.props.user
+                    : {
+                        name: "",
+                        mail: "",
+                        username: "",
+                        website: "",
+                    },
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange({ target }) {
+        const { name, value } = target;
+        this.setState({
+            user: {
+                ...this.state.user,
+                [name]: value,
+            }
+        });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
     }
 
     render() {
-        const { user, onClick } = this.props;
+        const { onClick } = this.props;
+        const { user } = this.state;
         return (
             <>
-                <h1>{user ? "Formulario de Edición" : "Dando de alta un nuevo usuario"}</h1>
+                <h1>{user.name === "" ? "Formulario de Edición" : "Dando de alta un nuevo usuario"}</h1>
                 <div className="user-form-container">
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <label htmlFor="name">Nombre completo:</label>
-                        <input type="text" value={user ? user.name : ""} />
-                        <label htmlFor="mail">Email:</label>
-                        <input type="mail" value={user ? user.mail : ""} />
-                        <label htmlFor="username">Nombre de usuario:</label>
-                        <input type="text" value={user ? user.username : ""} />
-                        <hr></hr>
-                        <label htmlFor="website">Sitio web:</label>
-                        <input type="text" value={user && user.website ? user.website : ""} />
+                        <input name="name" type="text" value={user.name} onChange={this.handleChange} />
 
-                        <button className="form-button" onClick={() => onClick(user)}>Enviar</button>
+                        <label htmlFor="mail">Email:</label>
+                        <input name="mail" type="mail" value={user.mail} onChange={this.handleChange} />
+
+                        <label htmlFor="username">Nombre de usuario:</label>
+                        <input name="username" type="text" value={user.username} onChange={this.handleChange} />
+
+                        <hr />
+
+                        <label htmlFor="website">Sitio web:</label>
+                        <input name="website" type="text" value={user.website} onChange={this.handleChange} />
+
+                        <button className="form-button" type="submit" onClick={() => onClick(this.state.user)}>Enviar</button>
                     </form>
                 </div>
             </>

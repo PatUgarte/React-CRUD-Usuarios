@@ -1,7 +1,11 @@
 import React from 'react';
-import "./App.css";
+
 import UserListContainer from "./components/UserListContainer.jsx";
 import UserForm from "./components/UserForm.jsx";
+
+import "./App.css";
+
+import usersList from "../usersList";
 
 export default class App extends React.Component {
 
@@ -10,60 +14,43 @@ export default class App extends React.Component {
 
         this.state = {
             route: "list",
-            selectedUser: null,
+            currentUser: null,
         };
 
-        this.toggleRouteState = this.toggleRouteState.bind(this);
+        this.onClickHandler = this.onClickHandler.bind(this);
+        this.listaUsuarios = usersList.get();
     }
 
-    toggleRouteState(selectedUser) {
-
-        const { route } = this.state;
-
+    toggleRouteState() {
         this.setState(
             {
-                route: (route === "list") ? "form" : "list",
-                selectedUser,
+                route:
+                    (this.state.route === "list")
+                        ? "form"
+                        : "list"
             }
         );
     }
 
+    onClickHandler(user) {
+        this.toggleRouteState();
+        this.setState({ currentUser: user })
+        if (user && !(this.listaUsuarios.find(({ username }) => username === user.username))) this.listaUsuarios = usersList.add(user);
+    }
+
     render() {
-        const { route, selectedUser } = this.state;
-        const listaUsuarios = [
-            {
-                id: 1,
-                name: "Mario Bros",
-                mail: "mario@nintendo.com",
-                username: "ItsMeMario",
-                website: "",
-            },
-            {
-                id: 2,
-                name: "Luigi Bros",
-                mail: "lbros@nintendo.com",
-                username: "MariosTallerBrother",
-                website: "http://www.luigi.com",
-            },
-            {
-                id: 3,
-                name: "Patricio Ugarte",
-                mail: "pat@digitalhouse.com",
-                username: "PatUgarte",
-                website: "https://www.patugarte.dev",
-            }
-        ];
+        const { route, currentUser } = this.state;
 
         return (
             <div className="App">
                 {
                     route === "list"
                         ? (<UserListContainer
-                            usuarios={listaUsuarios}
-                            onClick={(user) => this.toggleRouteState(user)} />)
+                            usuarios={this.listaUsuarios}
+                            onClick={(user) => this.onClickHandler(user)} />)
                         : (<UserForm
-                            user={selectedUser}
-                            onClick={(user) => this.toggleRouteState(user)} />)
+                            user={currentUser}
+                            onClick={(user) => this.onClickHandler(user)} />)
                 }
             </div>
         );
