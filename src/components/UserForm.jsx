@@ -1,22 +1,17 @@
 import React, { Component } from "react";
+
 import "../styles/UserForm.css";
 
 export default class UserForm extends Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
-        
+
         this.state = {
             user:
                 this.props.user
                     ? this.props.user
-                    : {
-                        name: "",
-                        mail: "",
-                        username: "",
-                        website: "",
-                    },
+                    : { name: "", mail: "", username: "", website: "" },
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -58,7 +53,7 @@ export default class UserForm extends Component {
                         <label htmlFor="website">Sitio web:</label>
                         <input name="website" type="text" value={user.website} onChange={this.handleChange} />
 
-                        <button className="form-button" type="submit" onClick={() => onClick(this.state.user)}>Enviar</button>
+                        <button className="form-button" type="submit" onClick={() => onClick(user)}>Enviar</button>
                     </form>
                 </div>
             </>
